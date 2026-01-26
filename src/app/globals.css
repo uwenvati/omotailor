@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-charcoal: #36454F;
+  --color-luxury-white: #FAFAFA;
+  --color-luxury-black: #050505;
+  --color-border-elegant: #E5E5E5;
+
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.luxury-button {
+  @apply px-8 py-3 bg-black text-white hover:bg-neutral-800 transition-all duration-300 font-medium uppercase tracking-widest text-sm disabled:opacity-50;
+}
+
+.luxury-button-outline {
+  @apply px-8 py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-medium uppercase tracking-widest text-sm;
+}
+
+.glass-morphism {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
