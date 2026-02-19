@@ -6,9 +6,10 @@ import { usePathname } from 'next/navigation';
 import { ShoppingBag, Search, Menu, X } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
-const navLinks = [
+const navLinks: { href: string; label: string; badge?: string }[] = [
     { href: '/', label: 'Home' },
     { href: '/shop', label: 'Shop' },
+    { href: '/ai-try-on', label: 'AI Try-On', badge: 'Soon' },
     { href: '/contact', label: 'Contact' },
 ];
 
@@ -85,10 +86,15 @@ const Header = () => {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`nav-link text-[13px] uppercase tracking-[2px] pb-1 transition-colors font-medium ${isActive(link.href) ? 'active text-black' : 'text-neutral-600 hover:text-black'
+                            className={`nav-link text-[13px] uppercase tracking-[2px] pb-1 transition-colors font-medium flex items-center gap-1.5 ${isActive(link.href) ? 'active text-black' : 'text-neutral-600 hover:text-black'
                                 }`}
                         >
                             {link.label}
+                            {link.badge && (
+                                <span className="bg-gold text-white text-[8px] uppercase tracking-wider font-bold px-1.5 py-0.5 leading-none">
+                                    {link.badge}
+                                </span>
+                            )}
                         </Link>
                     ))}
                 </nav>
@@ -120,10 +126,15 @@ const Header = () => {
                             key={link.href}
                             href={link.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className={`text-3xl uppercase tracking-[4px] font-light transition-colors ${isActive(link.href) ? 'text-gold' : 'text-white hover:text-gold'
+                            className={`text-3xl uppercase tracking-[4px] font-light transition-colors flex items-center gap-3 ${isActive(link.href) ? 'text-gold' : 'text-white hover:text-gold'
                                 }`}
                         >
                             {link.label}
+                            {link.badge && (
+                                <span className="bg-gold text-black text-[9px] uppercase tracking-wider font-bold px-2 py-1 leading-none">
+                                    {link.badge}
+                                </span>
+                            )}
                         </Link>
                     ))}
 

@@ -46,6 +46,12 @@ const Footer = () => {
                                     Accessories
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/ai-try-on" className="hover:text-black transition-colors flex items-center gap-1.5">
+                                    AI Virtual Try-On
+                                    <span className="bg-gold text-white text-[8px] uppercase tracking-wider font-bold px-1 py-0.5 leading-none">Soon</span>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 

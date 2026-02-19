@@ -99,6 +99,56 @@
   }
 }
 
+/* Luxury button styles */
+.luxury-button {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: all 0.3s;
+}
+
+.luxury-button:hover {
+  background: #D4AF37;
+  color: #000;
+}
+
+.luxury-button-white {
+  display: inline-block;
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: all 0.3s;
+}
+
+.luxury-button-white:hover {
+  background: #D4AF37;
+  color: #fff;
+}
+
+.luxury-button-outline {
+  display: inline-block;
+  background: transparent;
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: 1.5px solid #000;
+  transition: all 0.3s;
+}
+
+.luxury-button-outline:hover {
+  background: #000;
+  color: #fff;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #000000;
