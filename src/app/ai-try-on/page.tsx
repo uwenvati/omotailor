@@ -62,7 +62,7 @@ const FAQS = [
     },
     {
         q: 'When will this feature launch?',
-        a: "We're targeting Q2 2025 for our beta launch. Join the waitlist to get early access and be among the first to try it when it goes live!",
+        a: "We're targeting Q2 2026 for our beta launch. Join the waitlist to get early access and be among the first to try it when it goes live!",
     },
     {
         q: 'Will it work on my phone?',
@@ -150,7 +150,7 @@ export default function AITryOnPage() {
 
                     <div className="mt-10 space-y-5">
                         <div className="inline-block px-8 py-3 bg-gold text-black text-sm uppercase tracking-[3px] font-bold animate-pulse">
-                            Coming Soon 2025
+                            Coming Soon 2026
                         </div>
 
                         <div>
@@ -260,7 +260,7 @@ export default function AITryOnPage() {
                             <button
                                 disabled
                                 className="w-full py-4 bg-neutral-200 text-neutral-400 text-sm uppercase tracking-widest font-bold cursor-not-allowed"
-                                title="Feature launching Q2 2025"
+                                title="Feature launching Q2 2026"
                             >
                                 Try It Now — Coming Soon
                             </button>
@@ -407,7 +407,7 @@ export default function AITryOnPage() {
                                 value={email}
                                 onChange={(e) => { setEmail(e.target.value); setEmailError(''); }}
                                 placeholder="Enter your email address..."
-                                className={`w-full px-6 py-4 text-black text-base focus:outline-none focus:ring-2 focus:ring-gold ${emailError ? 'ring-2 ring-red-500' : ''
+                                className={`w-full px-6 py-4 bg-white text-black text-base focus:outline-none focus:ring-2 focus:ring-gold ${emailError ? 'ring-2 ring-red-500' : ''
                                     }`}
                             />
                             {emailError && <p className="text-red-400 text-sm text-left">{emailError}</p>}

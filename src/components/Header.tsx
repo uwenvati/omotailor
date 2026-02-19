@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, Search, Menu, X } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Instagram, Facebook, Twitter, MessageCircle, Mail, Phone } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 const navLinks: { href: string; label: string; badge?: string }[] = [
@@ -49,6 +49,8 @@ const Header = () => {
         return pathname.startsWith(href);
     };
 
+    const closeMenu = () => setIsMobileMenuOpen(false);
+
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
@@ -63,7 +65,7 @@ const Header = () => {
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     aria-label="Toggle menu"
                 >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    <Menu size={24} />
                 </button>
 
                 {/* Logo */}
@@ -115,36 +117,117 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* ===== MOBILE MENU ===== */}
+
+            {/* Dark Overlay */}
             <div
-                className={`fixed inset-0 bg-black z-40 transition-all duration-500 lg:hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                className={`fixed inset-0 bg-black/50 z-[60] lg:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+                    }`}
+                onClick={closeMenu}
+            />
+
+            {/* Slide-in Panel */}
+            <div
+                className={`fixed top-0 left-0 h-full w-[85%] max-w-[320px] bg-black z-[70] lg:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
                     }`}
             >
-                <div className="flex flex-col items-center justify-center h-full space-y-10">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className={`text-3xl uppercase tracking-[4px] font-light transition-colors flex items-center gap-3 ${isActive(link.href) ? 'text-gold' : 'text-white hover:text-gold'
-                                }`}
+                <div className="flex flex-col h-full">
+                    {/* Close Button */}
+                    <div className="flex justify-end p-5">
+                        <button
+                            onClick={closeMenu}
+                            className="text-white hover:text-gold transition-colors p-1"
+                            aria-label="Close menu"
                         >
-                            {link.label}
-                            {link.badge && (
-                                <span className="bg-gold text-black text-[9px] uppercase tracking-wider font-bold px-2 py-1 leading-none">
-                                    {link.badge}
-                                </span>
-                            )}
-                        </Link>
-                    ))}
+                            <X size={24} />
+                        </button>
+                    </div>
 
-                    <button
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="absolute top-6 right-6 text-white hover:text-gold transition-colors"
-                        aria-label="Close menu"
-                    >
-                        <X size={28} />
-                    </button>
+                    {/* Separator */}
+                    <div className="mx-6 border-t border-white/15" />
+
+                    {/* Navigation Links */}
+                    <nav className="flex flex-col py-4">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                onClick={closeMenu}
+                                className={`flex items-center gap-3 px-6 py-4 text-[18px] font-medium uppercase tracking-[2px] transition-all ${isActive(link.href)
+                                    ? 'text-gold border-l-2 border-gold bg-white/5'
+                                    : 'text-white hover:text-gold hover:bg-white/5'
+                                    }`}
+                            >
+                                {link.label}
+                                {link.badge && (
+                                    <span className="bg-gold text-black text-[8px] uppercase tracking-wider font-bold px-1.5 py-0.5 leading-none">
+                                        {link.badge}
+                                    </span>
+                                )}
+                            </Link>
+                        ))}
+                    </nav>
+
+                    {/* Separator */}
+                    <div className="mx-6 border-t border-white/15" />
+
+                    {/* View Cart Button */}
+                    <div className="px-6 py-5">
+                        <Link
+                            href="/cart"
+                            onClick={closeMenu}
+                            className="flex items-center justify-center gap-2 bg-gold text-black font-bold text-sm uppercase tracking-[2px] h-14 w-full hover:bg-white transition-colors"
+                        >
+                            <ShoppingBag size={18} />
+                            View Cart {cartCount > 0 && `(${cartCount} ${cartCount === 1 ? 'item' : 'items'})`}
+                        </Link>
+                    </div>
+
+                    {/* Separator */}
+                    <div className="mx-6 border-t border-white/15" />
+
+                    {/* Social Icons */}
+                    <div className="flex items-center justify-center gap-4 py-6">
+                        {[
+                            { icon: Instagram, href: 'https://instagram.com/omotailor', label: 'Instagram' },
+                            { icon: Facebook, href: 'https://facebook.com/omotailor', label: 'Facebook' },
+                            { icon: Twitter, href: 'https://twitter.com/omotailor', label: 'Twitter' },
+                            { icon: MessageCircle, href: 'https://wa.me/2349160002472', label: 'WhatsApp' },
+                        ].map((social) => (
+                            <a
+                                key={social.label}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-gold hover:border-gold hover:text-black transition-all"
+                                aria-label={social.label}
+                            >
+                                <social.icon size={16} />
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* Separator */}
+                    <div className="mx-6 border-t border-white/15" />
+
+                    {/* Contact Info */}
+                    <div className="px-6 py-5 space-y-3">
+                        <a href="mailto:support@omotailor.com" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
+                            <Mail size={14} />
+                            support@omotailor.com
+                        </a>
+                        <a href="tel:+2349160002472" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
+                            <Phone size={14} />
+                            +234 916 000 2472
+                        </a>
+                    </div>
+
+                    {/* Footer / Copyright */}
+                    <div className="mt-auto px-6 py-5">
+                        <p className="text-white/30 text-xs">
+                            © 2026 Omotailor. All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
         </header>
