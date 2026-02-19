@@ -2,13 +2,21 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Heart, Search, Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { ShoppingBag, Search, Menu, X } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+
+const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/shop', label: 'Shop' },
+    { href: '/contact', label: 'Contact' },
+];
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { cartCount } = useCart();
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,43 +26,83 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Close mobile menu on route change
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [pathname]);
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isMobileMenuOpen]);
+
+    const isActive = (href: string) => {
+        if (href === '/') return pathname === '/';
+        return pathname.startsWith(href);
+    };
+
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-elegant py-4' : 'bg-transparent py-6'}`}>
-            <div className="container mx-auto px-6 flex items-center justify-between">
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+                ? 'bg-white/95 backdrop-blur-md shadow-[0_2px_8px_rgba(0,0,0,0.1)] py-3'
+                : 'bg-white py-5'
+                }`}
+        >
+            <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex items-center justify-between">
                 {/* Mobile Menu Toggle */}
                 <button
-                    className="lg:hidden p-2"
+                    className="lg:hidden p-2 hover:text-gold transition-colors"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle menu"
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
 
                 {/* Logo */}
                 <Link href="/" className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0">
-                    <img src="/assets/logo.png" alt="Omotailor" className="h-8 lg:h-10 w-auto object-contain" />
+                    <img
+                        src="/assets/small-logo.svg"
+                        alt="Omotailor"
+                        className="h-10 w-auto object-contain lg:hidden"
+                    />
+                    <img
+                        src="/assets/logo.svg"
+                        alt="Omotailor"
+                        className="hidden lg:block h-12 w-auto object-contain"
+                    />
                 </Link>
 
                 {/* Desktop Navigation */}
                 <nav className="hidden lg:flex items-center space-x-10">
-                    <Link href="/" className="text-sm uppercase tracking-widest hover:text-gold transition-colors font-medium">Home</Link>
-                    <Link href="/shop" className="text-sm uppercase tracking-widest hover:text-gold transition-colors font-medium">Shop</Link>
-                    <Link href="#" className="text-sm uppercase tracking-widest hover:text-gold transition-colors font-medium">About</Link>
-                    <Link href="#" className="text-sm uppercase tracking-widest hover:text-gold transition-colors font-medium">Contact</Link>
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            className={`nav-link text-[13px] uppercase tracking-[2px] pb-1 transition-colors font-medium ${isActive(link.href) ? 'active text-black' : 'text-neutral-600 hover:text-black'
+                                }`}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
                 </nav>
 
-                {/* Icons */}
+                {/* Right Section */}
                 <div className="flex items-center space-x-4 lg:space-x-6">
-                    <button className="p-2 hover:text-gold transition-colors">
+                    <button className="p-2 hover:text-gold transition-colors" aria-label="Search">
                         <Search size={20} />
                     </button>
-                    <button className="hidden sm:block p-2 hover:text-gold transition-colors relative">
-                        <Heart size={20} />
-                    </button>
-                    <Link href="/cart" className="p-2 hover:text-gold transition-colors relative">
+                    <Link href="/cart" className="p-2 hover:text-gold transition-colors relative" aria-label="Shopping cart">
                         <ShoppingBag size={20} />
                         {cartCount > 0 && (
-                            <span className="absolute top-1 right-1 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                                {cartCount}
+                            <span className="absolute -top-0.5 -right-0.5 bg-gold text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                                {cartCount > 99 ? '99+' : cartCount}
                             </span>
                         )}
                     </Link>
@@ -62,12 +110,30 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-white z-40 transition-transform duration-500 lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div
+                className={`fixed inset-0 bg-black z-40 transition-all duration-500 lg:hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                    }`}
+            >
                 <div className="flex flex-col items-center justify-center h-full space-y-10">
-                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl uppercase tracking-widest font-bold">Home</Link>
-                    <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl uppercase tracking-widest font-bold">Shop</Link>
-                    <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl uppercase tracking-widest font-bold">About</Link>
-                    <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-2xl uppercase tracking-widest font-bold">Contact</Link>
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`text-3xl uppercase tracking-[4px] font-light transition-colors ${isActive(link.href) ? 'text-gold' : 'text-white hover:text-gold'
+                                }`}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+
+                    <button
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="absolute top-6 right-6 text-white hover:text-gold transition-colors"
+                        aria-label="Close menu"
+                    >
+                        <X size={28} />
+                    </button>
                 </div>
             </div>
         </header>

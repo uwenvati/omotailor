@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -6,15 +7,95 @@
   --color-luxury-white: #FAFAFA;
   --color-luxury-black: #050505;
   --color-border-elegant: #E5E5E5;
+  --color-soft-gray: #F5F5F5;
+  --color-text-gray: #666666;
+  --color-error: #DC2626;
+  --color-success: #16A34A;
 
-  --font-heading: "Montserrat", sans-serif;
+  --font-heading: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in: fadeIn 0.6s ease-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-marquee: marquee 20s linear infinite;
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    to {
+      max-height: 500px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes heroFade {
+    0% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+
+    10% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    90% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -23,26 +104,160 @@
   --foreground: #000000;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
 }
 
+/* Buttons */
 .luxury-button {
-  @apply px-8 py-3 bg-black text-white hover:bg-neutral-800 transition-all duration-300 font-medium uppercase tracking-widest text-sm disabled:opacity-50;
+  @apply px-8 py-3 bg-black text-white hover:bg-gold transition-all duration-300 font-medium uppercase tracking-widest text-sm disabled:opacity-50;
 }
 
 .luxury-button-outline {
-  @apply px-8 py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-medium uppercase tracking-widest text-sm;
+  @apply px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-medium uppercase tracking-widest text-sm;
+}
+
+.luxury-button-white {
+  @apply px-8 py-3 bg-white text-black hover:bg-gold hover:text-white transition-all duration-300 font-medium uppercase tracking-widest text-sm;
+}
+
+.luxury-button-gold {
+  @apply px-8 py-3 bg-gold text-white hover:bg-black transition-all duration-300 font-medium uppercase tracking-widest text-sm;
 }
 
 .glass-morphism {
   @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+/* Nav link underline animation */
+.nav-link {
+  @apply relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-[1.5px] bg-gold transition-all duration-300;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  @apply w-full;
+}
+
+/* Accordion */
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Category card overlay */
+.category-card {
+  @apply relative overflow-hidden;
+}
+
+.category-card::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-all duration-500;
+}
+
+.category-card:hover::after {
+  @apply from-black/80 via-black/30;
+}
+
+/* Image zoom on hover */
+.image-zoom {
+  @apply transition-transform duration-700;
+}
+
+.image-zoom:hover {
+  @apply scale-110;
+}
+
+/* Toast notification */
+.toast {
+  @apply fixed bottom-6 right-6 bg-black text-white px-6 py-4 text-sm font-medium z-50 shadow-xl;
+  animation: slideUp 0.3s ease-out, fadeOut 0.3s ease-in 2.7s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Selection text */
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* Hide scrollbar for horizontal scroll on mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee auto-slide animation */
+.marquee-slide {
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-slide:hover {
+  animation-play-state: paused;
+}
+
+/* Faster variant for smaller content like value props */
+section.bg-soft-gray .marquee-slide {
+  animation-duration: 15s;
 }

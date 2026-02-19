@@ -1,40 +1,67 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag, CreditCard, ShieldCheck } from 'lucide-react';
+import { formatNaira } from '@/data/products';
+import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag, ShieldCheck, X, Check, Tag } from 'lucide-react';
 
 const CartPage = () => {
-    const { cart, cartTotal, cartCount, updateQuantity, removeFromCart } = useCart();
+    const {
+        cart, cartTotal, cartCount, updateQuantity, removeFromCart,
+        promoCode, promoDiscount, applyPromoCode, removePromoCode, shippingCost
+    } = useCart();
+    const [promoInput, setPromoInput] = useState('');
+    const [promoError, setPromoError] = useState('');
+    const [promoSuccess, setPromoSuccess] = useState(false);
+
+    const handleApplyPromo = () => {
+        setPromoError('');
+        setPromoSuccess(false);
+        if (!promoInput.trim()) {
+            setPromoError('Please enter a promo code');
+            return;
+        }
+        const success = applyPromoCode(promoInput);
+        if (success) {
+            setPromoSuccess(true);
+            setPromoInput('');
+        } else {
+            setPromoError('Invalid promo code');
+        }
+    };
+
+    const discountAmount = cartTotal * promoDiscount;
+    const finalTotal = cartTotal - discountAmount + shippingCost;
 
     if (cart.length === 0) {
         return (
-            <div className="pt-48 pb-32 text-center space-y-8">
-                <div className="w-24 h-24 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+            <div className="pt-40 pb-32 text-center space-y-8">
+                <div className="w-24 h-24 bg-neutral-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <ShoppingBag size={40} className="text-neutral-300" />
                 </div>
                 <div className="space-y-4">
-                    <h1 className="text-4xl font-bold uppercase tracking-tight">Your Cart is Empty</h1>
-                    <p className="text-neutral-500 font-light max-w-sm mx-auto">
-                        It looks like you haven't added any pieces to your collection yet.
+                    <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">Your Cart is Empty</h1>
+                    <p className="text-text-gray font-light max-w-sm mx-auto">
+                        Start adding items to your collection and experience Nigerian elegance.
                     </p>
                 </div>
                 <Link href="/shop" className="luxury-button inline-block min-w-[200px]">
-                    Begin Shopping
+                    Continue Shopping
                 </Link>
             </div>
         );
     }
 
     return (
-        <div className="pt-32 pb-24">
-            <div className="container mx-auto px-6">
-                <div className="flex items-center justify-between mb-16 border-b border-elegant pb-8">
+        <div className="pt-28 pb-24">
+            <div className="max-w-[1280px] mx-auto px-6 md:px-12">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-12 pb-6 border-b border-border-elegant">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-tight">Shopping Bag</h1>
-                        <p className="text-neutral-500 mt-2 font-light uppercase tracking-[0.2em] text-xs">
-                            {cartCount} items in your collection
+                        <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">Shopping Cart</h1>
+                        <p className="text-text-gray mt-1 text-sm">
+                            {cartCount} {cartCount === 1 ? 'item' : 'items'} in your cart
                         </p>
                     </div>
                     <Link href="/shop" className="hidden sm:flex items-center space-x-2 text-xs font-bold uppercase tracking-widest hover:text-gold transition-colors">
@@ -43,64 +70,71 @@ const CartPage = () => {
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                    {/* Cart Items List */}
-                    <div className="lg:col-span-8 space-y-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    {/* Cart Items */}
+                    <div className="lg:col-span-8 space-y-8">
                         {cart.map((item) => (
-                            <div key={`${item.id}-${item.size}-${item.color}`} className="flex flex-col sm:flex-row gap-8 items-start sm:items-center pb-12 border-b border-neutral-100 last:border-0 group">
+                            <div
+                                key={`${item.id}-${item.size}-${item.color}`}
+                                className="flex flex-col sm:flex-row gap-6 items-start pb-8 border-b border-neutral-100 last:border-0 group"
+                            >
                                 {/* Image */}
-                                <div className="w-full sm:w-40 aspect-[4/5] bg-neutral-50 relative overflow-hidden flex-shrink-0">
-                                    <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                    <div className="absolute top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 flex items-center space-x-1.5 border border-white/20">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                                        <span className="text-[8px] font-bold uppercase tracking-widest">3D Asset</span>
-                                    </div>
-                                </div>
+                                <Link
+                                    href={`/product/${item.id}`}
+                                    className="w-full sm:w-28 aspect-[3/4] bg-neutral-50 overflow-hidden flex-shrink-0"
+                                >
+                                    <img
+                                        src={item.image}
+                                        alt={item.name}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </Link>
 
                                 {/* Info */}
-                                <div className="flex-1 space-y-4">
+                                <div className="flex-1 space-y-3 w-full">
                                     <div className="flex justify-between items-start">
                                         <div>
-                                            <h3 className="text-xl font-bold uppercase tracking-tight group-hover:text-gold transition-colors">
+                                            <h3 className="text-base font-bold uppercase tracking-tight group-hover:text-gold transition-colors">
                                                 <Link href={`/product/${item.id}`}>{item.name}</Link>
                                             </h3>
-                                            <div className="flex items-center space-x-4 mt-2 text-xs uppercase tracking-widest font-bold text-neutral-400">
-                                                <span className="flex items-center space-x-2">
-                                                    <span>Color:</span>
-                                                    <span
-                                                        className="w-3 h-3 rounded-full border border-neutral-200"
-                                                        style={{ backgroundColor: item.color === 'charcoal' ? '#36454F' : item.color === 'gold' ? '#D4AF37' : item.color }}
-                                                    ></span>
-                                                </span>
-                                                <span className="w-px h-3 bg-neutral-200"></span>
+                                            <div className="flex items-center space-x-3 mt-1 text-xs text-text-gray uppercase tracking-wider">
+                                                <span>Color: {item.color}</span>
+                                                <span className="w-px h-3 bg-neutral-200" />
                                                 <span>Size: {item.size}</span>
                                             </div>
                                         </div>
-                                        <span className="text-xl font-bold">${item.price.toFixed(2)}</span>
+                                        <span className="text-base font-bold">
+                                            {formatNaira((item.salePrice || item.price) * item.quantity)}
+                                        </span>
                                     </div>
 
-                                    <div className="flex items-center justify-between pt-4">
+                                    <div className="flex items-center justify-between pt-2">
+                                        {/* Quantity */}
                                         <div className="flex items-center border border-neutral-200">
                                             <button
                                                 onClick={() => updateQuantity(item.id, item.size, item.color, item.quantity - 1)}
                                                 className="p-2 hover:text-gold transition-colors"
+                                                aria-label="Decrease quantity"
                                             >
                                                 <Minus size={14} />
                                             </button>
-                                            <span className="w-10 text-center font-bold text-sm tracking-widest">{item.quantity}</span>
+                                            <span className="w-10 text-center font-bold text-sm">{item.quantity}</span>
                                             <button
                                                 onClick={() => updateQuantity(item.id, item.size, item.color, item.quantity + 1)}
                                                 className="p-2 hover:text-gold transition-colors"
+                                                aria-label="Increase quantity"
                                             >
                                                 <Plus size={14} />
                                             </button>
                                         </div>
 
+                                        {/* Remove */}
                                         <button
                                             onClick={() => removeFromCart(item.id, item.size, item.color)}
-                                            className="text-xs uppercase tracking-widest font-bold text-neutral-400 hover:text-red-500 flex items-center space-x-2 transition-colors"
+                                            className="text-xs uppercase tracking-widest font-medium text-neutral-400 hover:text-error flex items-center space-x-1.5 transition-colors"
                                         >
                                             <Trash2 size={14} />
+                                            <span className="hidden sm:inline">Remove</span>
                                         </button>
                                     </div>
                                 </div>
@@ -109,55 +143,90 @@ const CartPage = () => {
                     </div>
 
                     {/* Order Summary */}
-                    <div className="lg:col-span-4 sticky top-32">
-                        <div className="bg-neutral-50 p-8 space-y-8 border border-neutral-100">
-                            <h2 className="text-xl font-bold uppercase tracking-[0.2em]">Summary</h2>
+                    <div className="lg:col-span-4 sticky top-28">
+                        <div className="bg-soft-gray p-6 md:p-8 space-y-6 border border-neutral-100">
+                            <h2 className="text-lg font-bold uppercase tracking-[3px]">Order Summary</h2>
 
-                            <div className="space-y-4">
-                                <div className="flex justify-between text-sm uppercase tracking-widest text-neutral-500 font-medium">
-                                    <span>Subtotal</span>
-                                    <span className="text-black font-bold">${cartTotal.toFixed(2)}</span>
+                            <div className="space-y-3">
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-text-gray">Subtotal</span>
+                                    <span className="font-bold">{formatNaira(cartTotal)}</span>
                                 </div>
-                                <div className="flex justify-between text-sm uppercase tracking-widest text-neutral-500 font-medium">
-                                    <span>Shipping</span>
-                                    <span className="text-green-600 font-bold">Free</span>
+                                {promoCode && (
+                                    <div className="flex justify-between text-sm">
+                                        <span className="text-success flex items-center gap-1">
+                                            <Tag size={12} />
+                                            Discount ({promoCode})
+                                        </span>
+                                        <span className="font-bold text-success">-{formatNaira(discountAmount)}</span>
+                                    </div>
+                                )}
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-text-gray">Shipping</span>
+                                    <span className={`font-bold ${shippingCost === 0 ? 'text-success' : ''}`}>
+                                        {shippingCost === 0 ? 'Free' : formatNaira(shippingCost)}
+                                    </span>
                                 </div>
-                                <div className="flex justify-between text-sm uppercase tracking-widest text-neutral-500 font-medium">
-                                    <span>Tax (Estimated)</span>
-                                    <span className="text-black font-bold">${(cartTotal * 0.08).toFixed(2)}</span>
-                                </div>
+                                {shippingCost > 0 && (
+                                    <p className="text-[11px] text-text-gray">
+                                        Free shipping on orders over ₦50,000
+                                    </p>
+                                )}
                             </div>
 
-                            <div className="h-px bg-neutral-200"></div>
+                            <div className="h-px bg-neutral-200" />
 
                             <div className="flex justify-between items-end">
-                                <span className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">Total</span>
-                                <span className="text-3xl font-bold leading-none">${(cartTotal * 1.08).toFixed(2)}</span>
+                                <span className="text-xs font-bold uppercase tracking-[2px] text-text-gray">Total</span>
+                                <span className="text-2xl font-bold">{formatNaira(finalTotal)}</span>
                             </div>
 
-                            <button className="w-full luxury-button py-5 text-center flex items-center justify-center space-x-3 text-sm tracking-[0.3em]">
-                                <CreditCard size={18} />
-                                <span>Checkout</span>
-                            </button>
+                            {/* Promo Code */}
+                            <div className="space-y-2">
+                                {promoCode ? (
+                                    <div className="flex items-center justify-between bg-success/10 px-3 py-2 text-sm">
+                                        <span className="flex items-center gap-2 text-success font-medium">
+                                            <Check size={14} />
+                                            {promoCode} applied
+                                        </span>
+                                        <button onClick={removePromoCode} className="text-text-gray hover:text-black">
+                                            <X size={14} />
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <div className="flex gap-2">
+                                        <input
+                                            type="text"
+                                            value={promoInput}
+                                            onChange={(e) => setPromoInput(e.target.value)}
+                                            placeholder="Promo code"
+                                            className="flex-1 border border-neutral-200 px-3 py-2 text-sm focus:outline-none focus:border-black transition-colors"
+                                        />
+                                        <button
+                                            onClick={handleApplyPromo}
+                                            className="px-4 py-2 bg-black text-white text-xs uppercase tracking-widest font-bold hover:bg-gold transition-colors"
+                                        >
+                                            Apply
+                                        </button>
+                                    </div>
+                                )}
+                                {promoError && (
+                                    <p className="text-xs text-error">{promoError}</p>
+                                )}
+                            </div>
 
-                            <div className="space-y-4 pt-4">
-                                <div className="flex items-center space-x-3 text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
-                                    <ShieldCheck size={14} className="text-gold" />
-                                    <span>Secure SSL Checkout</span>
-                                </div>
-                                <div className="flex gap-2">
-                                    <div className="w-8 h-5 bg-neutral-200 rounded"></div>
-                                    <div className="w-8 h-5 bg-neutral-200 rounded"></div>
-                                    <div className="w-8 h-5 bg-neutral-200 rounded"></div>
-                                    <div className="w-8 h-5 bg-neutral-200 rounded"></div>
-                                </div>
+                            <Link
+                                href="/checkout"
+                                className="luxury-button w-full py-4 text-center block"
+                            >
+                                Proceed to Checkout
+                            </Link>
+
+                            <div className="flex items-center justify-center space-x-2 text-[11px] text-text-gray uppercase tracking-widest">
+                                <ShieldCheck size={14} className="text-gold" />
+                                <span>Secure Checkout</span>
                             </div>
                         </div>
-
-                        <p className="mt-8 text-center text-[10px] uppercase tracking-widest text-neutral-400 px-12 leading-loose">
-                            By proceeding to checkout, you agree to our <br />
-                            <Link href="#" className="text-black border-b border-black pb-0.5">Privacy Policy</Link> and <Link href="#" className="text-black border-b border-black pb-0.5">Terms of Service</Link>.
-                        </p>
                     </div>
                 </div>
             </div>
