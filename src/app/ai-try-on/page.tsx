@@ -354,7 +354,7 @@ export default function AITryOnPage() {
             </section>
 
             {/* ═══════ 5. BENEFITS ═══════ */}
-            <section className="py-20 md:py-24 bg-white">
+            <section className="py-20 md:py-24 bg-white-solid">
                 <div className="max-w-[1100px] mx-auto px-6 md:px-12">
                     <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-center mb-16 font-[family-name:var(--font-heading)]">
                         Why You'll Love AI Try-On
@@ -438,7 +438,7 @@ export default function AITryOnPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
                         {TRUST_CARDS.map((card) => (
-                            <div key={card.title} className="bg-white border border-neutral-200 p-6 text-center">
+                            <div key={card.title} className="bg-white-solid border border-neutral-200 p-6 text-center">
                                 <div className="w-12 h-12 bg-soft-gray flex items-center justify-center mx-auto mb-4">
                                     <card.icon size={24} className="text-gold" />
                                 </div>
@@ -479,7 +479,7 @@ export default function AITryOnPage() {
             </section>
 
             {/* ═══════ 8. FINAL CTA ═══════ */}
-            <section className="py-20 md:py-24 bg-white">
+            <section className="py-20 md:py-24 bg-white-solid">
                 <div className="max-w-2xl mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 font-[family-name:var(--font-heading)]">
                         Ready When You Are

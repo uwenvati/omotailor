@@ -195,7 +195,24 @@ body::before {
   }
 }
 
-/* Removed global bg-white transparent override */
+/* Ensure content sits above the pattern */
+header,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Solid white background that covers the pattern completely */
+.bg-white-solid {
+  background-color: #ffffff !important;
+  position: relative;
+  z-index: 1;
+}
 
 h1,
 h2,
