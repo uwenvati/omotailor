@@ -1,0 +1,308 @@
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <style>
+      .brown1 { stroke: #8B6F47; fill: none; }
+      .brown2 { stroke: #6B5537; fill: none; }
+      .gold { stroke: #D4AF37; fill: none; }
+      .fill-brown1 { fill: #8B6F47; stroke: none; }
+      .fill-brown2 { fill: #6B5537; stroke: none; }
+      .fill-gold { fill: #D4AF37; stroke: none; }
+    </style>
+  </defs>
+
+  <!-- ===== MASK 1: Elongated Igbo-style mask (top-left) ===== -->
+  <g transform="translate(80,70) rotate(-8)" stroke-width="2.5">
+    <ellipse cx="0" cy="0" rx="28" ry="55" class="brown1"/>
+    <ellipse cx="-10" cy="-18" rx="6" ry="3.5" class="brown2" stroke-width="2"/>
+    <ellipse cx="10" cy="-18" rx="6" ry="3.5" class="brown2" stroke-width="2"/>
+    <circle cx="-10" cy="-18" r="2" class="fill-brown2"/>
+    <circle cx="10" cy="-18" r="2" class="fill-brown2"/>
+    <line x1="-8" y1="-5" x2="8" y2="-5" class="brown1" stroke-width="2"/>
+    <ellipse cx="0" cy="8" rx="8" ry="4" class="brown2" stroke-width="1.5"/>
+    <path d="M-28,-30 L-35,-45 L-28,-40" class="gold" stroke-width="2"/>
+    <path d="M28,-30 L35,-45 L28,-40" class="gold" stroke-width="2"/>
+    <line x1="-20" y1="30" x2="-20" y2="48" class="brown1" stroke-width="1.5"/>
+    <line x1="-15" y1="32" x2="-15" y2="50" class="brown1" stroke-width="1.5"/>
+    <line x1="20" y1="30" x2="20" y2="48" class="brown1" stroke-width="1.5"/>
+    <line x1="15" y1="32" x2="15" y2="50" class="brown1" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== SUN MOTIF 1 (top-center) ===== -->
+  <g transform="translate(350,100)" stroke-width="2.5">
+    <circle cx="0" cy="0" r="25" class="gold"/>
+    <circle cx="0" cy="0" r="10" class="fill-gold"/>
+    <line x1="0" y1="-30" x2="0" y2="-42" class="gold" stroke-width="2"/>
+    <line x1="0" y1="30" x2="0" y2="42" class="gold" stroke-width="2"/>
+    <line x1="-30" y1="0" x2="-42" y2="0" class="gold" stroke-width="2"/>
+    <line x1="30" y1="0" x2="42" y2="0" class="gold" stroke-width="2"/>
+    <line x1="-21" y1="-21" x2="-30" y2="-30" class="gold" stroke-width="1.8"/>
+    <line x1="21" y1="-21" x2="30" y2="-30" class="gold" stroke-width="1.8"/>
+    <line x1="-21" y1="21" x2="-30" y2="30" class="gold" stroke-width="1.8"/>
+    <line x1="21" y1="21" x2="30" y2="30" class="gold" stroke-width="1.8"/>
+  </g>
+
+  <!-- ===== EYE SYMBOL 1 (open) ===== -->
+  <g transform="translate(600,65) rotate(5)" stroke-width="2">
+    <path d="M-35,0 Q0,-22 35,0 Q0,22 -35,0 Z" class="brown1"/>
+    <circle cx="0" cy="0" r="10" class="brown2" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="4" class="fill-brown1"/>
+    <path d="M-15,-18 L-8,-25" class="brown2" stroke-width="1.5"/>
+    <path d="M0,-20 L0,-28" class="brown2" stroke-width="1.5"/>
+    <path d="M15,-18 L8,-25" class="brown2" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== ZIGZAG PATTERN 1 (top-right) ===== -->
+  <g transform="translate(830,90)" stroke-width="2.5">
+    <polyline points="0,0 15,20 30,0 45,20 60,0 75,20 90,0" class="brown1"/>
+    <polyline points="0,12 15,32 30,12 45,32 60,12 75,32 90,12" class="brown2" stroke-width="1.8"/>
+  </g>
+
+  <!-- ===== MASK 2: Round geometric mask ===== -->
+  <g transform="translate(180,280) rotate(12)" stroke-width="2.5">
+    <circle cx="0" cy="0" r="40" class="brown2"/>
+    <path d="M-18,-12 L-8,-12 L-13,-20 Z" class="brown1" stroke-width="2"/>
+    <path d="M8,-12 L18,-12 L13,-20 Z" class="brown1" stroke-width="2"/>
+    <circle cx="-13" cy="-12" r="3" class="fill-gold"/>
+    <circle cx="13" cy="-12" r="3" class="fill-gold"/>
+    <line x1="-12" y1="2" x2="12" y2="2" class="brown1" stroke-width="3"/>
+    <path d="M-10,15 Q0,25 10,15" class="brown2" stroke-width="2"/>
+    <line x1="-30" y1="-35" x2="-20" y2="-45" class="gold" stroke-width="2"/>
+    <line x1="30" y1="-35" x2="20" y2="-45" class="gold" stroke-width="2"/>
+    <line x1="-35" y1="-28" x2="-25" y2="-38" class="gold" stroke-width="1.5"/>
+    <line x1="35" y1="-28" x2="25" y2="-38" class="gold" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== DIAMOND PATTERN ===== -->
+  <g transform="translate(460,240)" stroke-width="2">
+    <polygon points="0,-30 25,0 0,30 -25,0" class="brown1"/>
+    <polygon points="0,-18 15,0 0,18 -15,0" class="gold" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="4" class="fill-brown2"/>
+  </g>
+
+  <!-- ===== DOTS PATTERN 1 ===== -->
+  <g transform="translate(700,200)">
+    <circle cx="0" cy="0" r="3.5" class="fill-brown1"/>
+    <circle cx="14" cy="0" r="3.5" class="fill-brown1"/>
+    <circle cx="28" cy="0" r="3.5" class="fill-brown1"/>
+    <circle cx="42" cy="0" r="3.5" class="fill-brown1"/>
+    <circle cx="7" cy="12" r="3.5" class="fill-brown2"/>
+    <circle cx="21" cy="12" r="3.5" class="fill-brown2"/>
+    <circle cx="35" cy="12" r="3.5" class="fill-brown2"/>
+    <circle cx="0" cy="24" r="3.5" class="fill-brown1"/>
+    <circle cx="14" cy="24" r="3.5" class="fill-brown1"/>
+    <circle cx="28" cy="24" r="3.5" class="fill-brown1"/>
+    <circle cx="42" cy="24" r="3.5" class="fill-brown1"/>
+  </g>
+
+  <!-- ===== ABSTRACT FACE PROFILE (left) ===== -->
+  <g transform="translate(50,480) rotate(-5)" stroke-width="2.5">
+    <path d="M0,-40 Q15,-35 18,-20 Q20,-5 15,5 Q18,12 12,20 Q8,28 0,32" class="brown1"/>
+    <circle cx="10" cy="-18" r="3" class="fill-gold"/>
+    <path d="M14,0 L22,2 L14,4" class="brown2" stroke-width="1.8"/>
+  </g>
+
+  <!-- ===== EYE SYMBOL 2 (closed) ===== -->
+  <g transform="translate(330,400) rotate(-10)" stroke-width="2.5">
+    <path d="M-30,0 Q0,-18 30,0" class="brown2"/>
+    <path d="M-20,0 L-14,-6" class="brown1" stroke-width="1.5"/>
+    <path d="M-8,0 L-4,-8" class="brown1" stroke-width="1.5"/>
+    <path d="M6,0 L4,-8" class="brown1" stroke-width="1.5"/>
+    <path d="M18,0 L14,-6" class="brown1" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== CONCENTRIC CIRCLES ===== -->
+  <g transform="translate(580,380)" stroke-width="2">
+    <circle cx="0" cy="0" r="35" class="brown1"/>
+    <circle cx="0" cy="0" r="25" class="brown2" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="15" class="gold" stroke-width="1.8"/>
+    <circle cx="0" cy="0" r="5" class="fill-brown1"/>
+  </g>
+
+  <!-- ===== VERTICAL DASHES ===== -->
+  <g transform="translate(780,340)" stroke-width="2.5">
+    <line x1="0" y1="0" x2="0" y2="12" class="brown1"/>
+    <line x1="0" y1="18" x2="0" y2="30" class="brown1"/>
+    <line x1="0" y1="36" x2="0" y2="48" class="brown1"/>
+    <line x1="12" y1="6" x2="12" y2="18" class="brown2"/>
+    <line x1="12" y1="24" x2="12" y2="36" class="brown2"/>
+    <line x1="12" y1="42" x2="12" y2="54" class="brown2"/>
+    <line x1="24" y1="0" x2="24" y2="12" class="brown1"/>
+    <line x1="24" y1="18" x2="24" y2="30" class="brown1"/>
+    <line x1="24" y1="36" x2="24" y2="48" class="brown1"/>
+  </g>
+
+  <!-- ===== MASK 3: Simplified abstract mask ===== -->
+  <g transform="translate(900,480) rotate(15)" stroke-width="2">
+    <path d="M-20,-45 Q0,-55 20,-45 L25,-10 Q20,20 0,35 Q-20,20 -25,-10 Z" class="brown1" stroke-width="2.5"/>
+    <line x1="-10" y1="-22" x2="-2" y2="-22" class="brown2" stroke-width="2.5"/>
+    <line x1="2" y1="-22" x2="10" y2="-22" class="brown2" stroke-width="2.5"/>
+    <line x1="-6" y1="-5" x2="6" y2="-5" class="gold" stroke-width="2"/>
+    <circle cx="0" cy="10" r="6" class="brown2"/>
+    <path d="M-18,-45 L-22,-55 L-15,-50" class="gold" stroke-width="1.5"/>
+    <path d="M18,-45 L22,-55 L15,-50" class="gold" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== LIPS/MOUTH 1 ===== -->
+  <g transform="translate(250,540) rotate(5)" stroke-width="2.5">
+    <path d="M-22,0 Q-10,-12 0,-8 Q10,-12 22,0" class="brown2"/>
+    <path d="M-22,0 Q-10,10 0,6 Q10,10 22,0" class="brown2"/>
+    <line x1="0" y1="-8" x2="0" y2="6" class="brown1" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== TRIANGLE PATTERN ===== -->
+  <g transform="translate(480,520)" stroke-width="2">
+    <polygon points="0,-22 20,15 -20,15" class="brown1"/>
+    <polygon points="0,22 20,-15 -20,-15" class="gold" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== SUN MOTIF 2 (spiral) ===== -->
+  <g transform="translate(720,530)" stroke-width="2">
+    <path d="M0,0 Q5,-5 10,0 Q15,8 5,12 Q-8,15 -12,3 Q-15,-10 2,-15 Q18,-18 22,2" class="gold" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="3" class="fill-gold"/>
+  </g>
+
+  <!-- ===== CRESCENT MOON ===== -->
+  <g transform="translate(130,650) rotate(20)" stroke-width="2.5">
+    <path d="M0,-25 Q18,-15 18,0 Q18,15 0,25 Q8,12 8,0 Q8,-12 0,-25 Z" class="fill-brown1" opacity="0.5"/>
+    <path d="M0,-25 Q18,-15 18,0 Q18,15 0,25 Q8,12 8,0 Q8,-12 0,-25 Z" class="brown2"/>
+  </g>
+
+  <!-- ===== ZIGZAG PATTERN 2 ===== -->
+  <g transform="translate(320,680) rotate(-5)" stroke-width="2">
+    <polyline points="0,0 10,15 20,0 30,15 40,0 50,15 60,0" class="gold"/>
+  </g>
+
+  <!-- ===== EYE WITH SUN RAYS ===== -->
+  <g transform="translate(550,660)" stroke-width="2">
+    <path d="M-30,0 Q0,-20 30,0 Q0,20 -30,0 Z" class="brown1" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="8" class="brown2" stroke-width="2"/>
+    <circle cx="0" cy="0" r="3" class="fill-brown1"/>
+    <line x1="-38" y1="-10" x2="-48" y2="-18" class="gold" stroke-width="1.5"/>
+    <line x1="-35" y1="-18" x2="-42" y2="-30" class="gold" stroke-width="1.5"/>
+    <line x1="38" y1="-10" x2="48" y2="-18" class="gold" stroke-width="1.5"/>
+    <line x1="35" y1="-18" x2="42" y2="-30" class="gold" stroke-width="1.5"/>
+    <line x1="-38" y1="10" x2="-48" y2="18" class="gold" stroke-width="1.5"/>
+    <line x1="38" y1="10" x2="48" y2="18" class="gold" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== MASK 4: Profile mask ===== -->
+  <g transform="translate(810,680) rotate(-10)" stroke-width="2.5">
+    <path d="M0,-35 Q12,-30 15,-15 Q18,-5 15,8 Q20,15 15,25 Q8,35 0,38 Q-5,30 -8,20 Q-12,5 -10,-10 Q-8,-25 0,-35 Z" class="brown2"/>
+    <circle cx="6" cy="-14" r="4" class="fill-gold"/>
+    <path d="M12,0 L20,2 L12,5" class="brown1" stroke-width="2"/>
+    <path d="M2,18 Q8,22 2,26" class="brown1" stroke-width="2"/>
+    <line x1="-8" y1="-32" x2="-5" y2="-45" class="gold" stroke-width="1.5"/>
+    <line x1="-3" y1="-35" x2="0" y2="-48" class="gold" stroke-width="1.5"/>
+    <line x1="3" y1="-34" x2="6" y2="-46" class="gold" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== HORIZONTAL DASHES ===== -->
+  <g transform="translate(40,820)" stroke-width="2.5">
+    <line x1="0" y1="0" x2="15" y2="0" class="brown1"/>
+    <line x1="22" y1="0" x2="37" y2="0" class="brown1"/>
+    <line x1="44" y1="0" x2="59" y2="0" class="brown1"/>
+    <line x1="8" y1="10" x2="23" y2="10" class="brown2"/>
+    <line x1="30" y1="10" x2="45" y2="10" class="brown2"/>
+    <line x1="52" y1="10" x2="67" y2="10" class="brown2"/>
+  </g>
+
+  <!-- ===== CONCENTRIC DIAMONDS ===== -->
+  <g transform="translate(250,830)" stroke-width="2">
+    <polygon points="0,-30 30,0 0,30 -30,0" class="brown2"/>
+    <polygon points="0,-20 20,0 0,20 -20,0" class="brown1" stroke-width="1.5"/>
+    <polygon points="0,-10 10,0 0,10 -10,0" class="gold"/>
+  </g>
+
+  <!-- ===== DOTS ROW ===== -->
+  <g transform="translate(430,800)">
+    <circle cx="0" cy="0" r="2.5" class="fill-gold"/>
+    <circle cx="12" cy="0" r="2.5" class="fill-brown1"/>
+    <circle cx="24" cy="0" r="2.5" class="fill-gold"/>
+    <circle cx="36" cy="0" r="2.5" class="fill-brown1"/>
+    <circle cx="48" cy="0" r="2.5" class="fill-gold"/>
+    <circle cx="60" cy="0" r="2.5" class="fill-brown1"/>
+    <circle cx="72" cy="0" r="2.5" class="fill-gold"/>
+  </g>
+
+  <!-- ===== CROSS/PLUS SYMBOL ===== -->
+  <g transform="translate(620,830) rotate(15)" stroke-width="3">
+    <line x1="-20" y1="0" x2="20" y2="0" class="brown1"/>
+    <line x1="0" y1="-20" x2="0" y2="20" class="brown1"/>
+    <circle cx="0" cy="0" r="6" class="gold" stroke-width="2"/>
+  </g>
+
+  <!-- ===== LIPS/MOUTH 2 ===== -->
+  <g transform="translate(800,850) rotate(-8)" stroke-width="2">
+    <ellipse cx="0" cy="0" rx="18" ry="8" class="brown1"/>
+    <line x1="-18" y1="0" x2="18" y2="0" class="brown2" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== SMALL TRIANGLES SCATTERED ===== -->
+  <g transform="translate(920,150)" stroke-width="2">
+    <polygon points="0,-12 10,8 -10,8" class="brown1"/>
+  </g>
+  <g transform="translate(950,300) rotate(180)" stroke-width="2">
+    <polygon points="0,-10 8,6 -8,6" class="gold"/>
+  </g>
+  <g transform="translate(40,380) rotate(90)" stroke-width="1.5">
+    <polygon points="0,-10 8,6 -8,6" class="brown2"/>
+  </g>
+
+  <!-- ===== SMALL STARS/ASTERISKS ===== -->
+  <g transform="translate(450,140)" stroke-width="1.8">
+    <line x1="-8" y1="0" x2="8" y2="0" class="gold"/>
+    <line x1="0" y1="-8" x2="0" y2="8" class="gold"/>
+    <line x1="-6" y1="-6" x2="6" y2="6" class="gold"/>
+    <line x1="6" y1="-6" x2="-6" y2="6" class="gold"/>
+  </g>
+  <g transform="translate(680,440)" stroke-width="1.5">
+    <line x1="-6" y1="0" x2="6" y2="0" class="brown1"/>
+    <line x1="0" y1="-6" x2="0" y2="6" class="brown1"/>
+    <line x1="-4" y1="-4" x2="4" y2="4" class="brown1"/>
+    <line x1="4" y1="-4" x2="-4" y2="4" class="brown1"/>
+  </g>
+
+  <!-- ===== WAVY LINE ===== -->
+  <g transform="translate(100,920)" stroke-width="2">
+    <path d="M0,0 Q20,-15 40,0 Q60,15 80,0 Q100,-15 120,0 Q140,15 160,0" class="brown1"/>
+  </g>
+
+  <!-- ===== SMALL EYE ===== -->
+  <g transform="translate(400,920) rotate(8)" stroke-width="2">
+    <path d="M-20,0 Q0,-12 20,0 Q0,12 -20,0 Z" class="brown2"/>
+    <circle cx="0" cy="0" r="5" class="fill-brown1"/>
+  </g>
+
+  <!-- ===== CHEVRON PATTERN ===== -->
+  <g transform="translate(650,900)" stroke-width="2.5">
+    <polyline points="0,15 15,0 30,15" class="brown1"/>
+    <polyline points="0,25 15,10 30,25" class="brown2" stroke-width="2"/>
+    <polyline points="0,35 15,20 30,35" class="gold" stroke-width="1.5"/>
+  </g>
+
+  <!-- ===== NSIBIDI-STYLE SYMBOL ===== -->
+  <g transform="translate(900,870) rotate(-5)" stroke-width="2.5">
+    <path d="M-15,-20 L0,0 L15,-20" class="brown1"/>
+    <path d="M0,0 L0,25" class="brown1"/>
+    <circle cx="-15" cy="-20" r="4" class="fill-gold"/>
+    <circle cx="15" cy="-20" r="4" class="fill-gold"/>
+    <circle cx="0" cy="25" r="4" class="fill-brown1"/>
+  </g>
+
+  <!-- ===== SCATTERED SMALL DOTS (texture) ===== -->
+  <circle cx="520" cy="150" r="2" class="fill-brown1" opacity="0.6"/>
+  <circle cx="160" cy="190" r="2.5" class="fill-brown2" opacity="0.5"/>
+  <circle cx="760" cy="120" r="2" class="fill-gold" opacity="0.6"/>
+  <circle cx="420" cy="350" r="2" class="fill-brown1" opacity="0.5"/>
+  <circle cx="850" cy="250" r="2.5" class="fill-brown2" opacity="0.6"/>
+  <circle cx="300" cy="750" r="2" class="fill-gold" opacity="0.5"/>
+  <circle cx="550" cy="800" r="2.5" class="fill-brown1" opacity="0.6"/>
+  <circle cx="150" cy="550" r="2" class="fill-brown2" opacity="0.5"/>
+  <circle cx="950" cy="700" r="2" class="fill-brown1" opacity="0.6"/>
+  <circle cx="500" cy="480" r="2" class="fill-gold" opacity="0.5"/>
+  <circle cx="30" cy="250" r="2" class="fill-brown1" opacity="0.5"/>
+  <circle cx="970" cy="950" r="2.5" class="fill-brown2" opacity="0.6"/>
+  <circle cx="200" cy="900" r="2" class="fill-gold" opacity="0.5"/>
+  <circle cx="730" cy="770" r="2" class="fill-brown1" opacity="0.6"/>
+
+</svg>

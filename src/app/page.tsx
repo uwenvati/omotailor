@@ -139,7 +139,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* ===== HERO SECTION ===== */}
-      <section className="relative pt-24 pb-20 md:pt-28 md:pb-24 bg-white overflow-hidden">
+      <section className="relative pt-24 pb-20 md:pt-28 md:pb-24 overflow-hidden">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           {/* Image Carousel */}
           <HeroCarousel />
@@ -152,8 +152,8 @@ export default function Home() {
               <span className="inline-block overflow-hidden align-bottom h-[1.15em]">
                 <span
                   className={`inline-block text-gold transition-all duration-400 ${isAnimating
-                      ? 'translate-y-full opacity-0'
-                      : 'translate-y-0 opacity-100'
+                    ? 'translate-y-full opacity-0'
+                    : 'translate-y-0 opacity-100'
                     }`}
                 >
                   {rotatingWords[wordIndex]}
@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* ===== SHOP BY CATEGORY ===== */}
-      <section className="py-20 md:py-24 bg-white">
+      <section className="py-20 md:py-24">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tight">
@@ -216,7 +216,7 @@ export default function Home() {
       </section>
 
       {/* ===== VALUE PROPOSITIONS ===== */}
-      <section className="py-16 md:py-24 bg-soft-gray overflow-hidden">
+      <section className="py-16 md:py-24 bg-black/5 overflow-hidden">
         {/* Desktop: 3-col grid */}
         <div className="hidden md:block max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-3 gap-16">
@@ -288,7 +288,7 @@ export default function Home() {
       </section>
 
       {/* ===== FEATURED PRODUCTS ===== */}
-      <section className="py-20 md:py-24 bg-white">
+      <section className="py-20 md:py-24">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 space-y-4 md:space-y-0">
             <div>
