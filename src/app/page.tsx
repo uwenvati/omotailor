@@ -33,44 +33,36 @@ function HeroCarousel() {
   const [indices, setIndices] = useState([0, 0, 0]);
 
   useEffect(() => {
-    // Column 1 changes at 0s, 12s, 24s...
+    // Column 1 changes every 4s
     const t1 = setInterval(() => {
       setIndices(prev => [
         (prev[0] + 1) % heroImages[0].length,
         prev[1],
         prev[2],
       ]);
-    }, 12000);
-
-    // Column 2 changes at 4s, 16s, 28s...
-    const t2Id = setTimeout(() => {
-      setIndices(prev => [prev[0], (prev[1] + 1) % heroImages[1].length, prev[2]]);
     }, 4000);
+
+    // Column 2 changes every 6s
     const t2 = setInterval(() => {
       setIndices(prev => [
         prev[0],
         (prev[1] + 1) % heroImages[1].length,
         prev[2],
       ]);
-    }, 12000);
+    }, 6000);
 
-    // Column 3 changes at 8s, 20s, 32s...
-    const t3Id = setTimeout(() => {
-      setIndices(prev => [prev[0], prev[1], (prev[2] + 1) % heroImages[2].length]);
-    }, 8000);
+    // Column 3 changes every 5s
     const t3 = setInterval(() => {
       setIndices(prev => [
         prev[0],
         prev[1],
         (prev[2] + 1) % heroImages[2].length,
       ]);
-    }, 12000);
+    }, 5000);
 
     return () => {
       clearInterval(t1);
-      clearTimeout(t2Id);
       clearInterval(t2);
-      clearTimeout(t3Id);
       clearInterval(t3);
     };
   }, []);
@@ -216,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* ===== VALUE PROPOSITIONS ===== */}
-      <section className="py-16 md:py-24 bg-black/5 overflow-hidden">
+      <section className="py-16 md:py-24 bg-white-solid overflow-hidden">
         {/* Desktop: 3-col grid */}
         <div className="hidden md:block max-w-[1280px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-3 gap-16">
