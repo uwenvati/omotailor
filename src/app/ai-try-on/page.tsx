@@ -126,7 +126,8 @@ export default function AITryOnPage() {
     return (
         <div className="flex flex-col">
             {/* ═══════ 1. HERO SECTION ═══════ */}
-            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2C2C2C 100%)' }}>
                 {/* Floating decorative elements */}
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute top-20 left-10 w-64 h-64 rounded-full opacity-5 bg-gold blur-3xl animate-float" />
@@ -134,7 +135,7 @@ export default function AITryOnPage() {
                 </div>
 
                 <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-black uppercase font-[family-name:var(--font-heading)]">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-white uppercase font-[family-name:var(--font-heading)]">
                         See Yourself in<br />
                         <span className="text-gold">Every Style</span>
                     </h1>
@@ -143,7 +144,7 @@ export default function AITryOnPage() {
                         AI-Powered Virtual Try-On Technology
                     </p>
 
-                    <p className="text-base md:text-lg text-text-gray max-w-xl mx-auto mt-6 leading-relaxed font-light">
+                    <p className="text-base md:text-lg text-neutral-400 max-w-xl mx-auto mt-6 leading-relaxed font-light">
                         Experience our clothing on your unique skin tone and body type before you buy — powered by AI
                     </p>
 
@@ -155,7 +156,7 @@ export default function AITryOnPage() {
                         <div>
                             <button
                                 onClick={scrollToWaitlist}
-                                className="luxury-button px-10 py-4 text-sm"
+                                className="luxury-button-white px-10 py-4 text-sm"
                             >
                                 Join the Waitlist
                             </button>
@@ -164,7 +165,7 @@ export default function AITryOnPage() {
 
                     <button
                         onClick={() => document.getElementById('feature-preview')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="mt-16 text-black/50 text-xs uppercase tracking-widest flex flex-col items-center gap-2 mx-auto hover:text-black transition-colors animate-bounce"
+                        className="mt-16 text-white/50 text-xs uppercase tracking-widest flex flex-col items-center gap-2 mx-auto hover:text-white/80 transition-colors animate-bounce"
                     >
                         <span>Learn More</span>
                         <ArrowDown size={16} />
@@ -173,7 +174,7 @@ export default function AITryOnPage() {
             </section>
 
             {/* ═══════ 2. FEATURE PREVIEW (Interactive Mockup) ═══════ */}
-            <section id="feature-preview" className="py-20 md:py-28">
+            <section id="feature-preview" className="py-20 md:py-28 bg-white">
                 <div className="max-w-[1280px] mx-auto px-6 md:px-12">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-center mb-4 font-[family-name:var(--font-heading)]">
                         How It Will Work
@@ -353,7 +354,7 @@ export default function AITryOnPage() {
             </section>
 
             {/* ═══════ 5. BENEFITS ═══════ */}
-            <section className="py-20 md:py-24 bg-black/5">
+            <section className="py-20 md:py-24 bg-white">
                 <div className="max-w-[1100px] mx-auto px-6 md:px-12">
                     <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-center mb-16 font-[family-name:var(--font-heading)]">
                         Why You'll Love AI Try-On
@@ -437,7 +438,7 @@ export default function AITryOnPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
                         {TRUST_CARDS.map((card) => (
-                            <div key={card.title} className="border border-neutral-200 p-6 text-center">
+                            <div key={card.title} className="bg-white border border-neutral-200 p-6 text-center">
                                 <div className="w-12 h-12 bg-soft-gray flex items-center justify-center mx-auto mb-4">
                                     <card.icon size={24} className="text-gold" />
                                 </div>
@@ -478,7 +479,7 @@ export default function AITryOnPage() {
             </section>
 
             {/* ═══════ 8. FINAL CTA ═══════ */}
-            <section className="py-20 md:py-24 bg-soft-gray">
+            <section className="py-20 md:py-24 bg-white">
                 <div className="max-w-2xl mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 font-[family-name:var(--font-heading)]">
                         Ready When You Are
