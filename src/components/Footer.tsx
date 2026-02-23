@@ -4,7 +4,7 @@ import { Instagram, Twitter, Facebook, Mail, Phone, MessageCircle } from 'lucide
 
 const Footer = () => {
     return (
-        <footer className="bg-white border-t border-border-elegant">
+        <footer className="border-t border-border-elegant">
             <div className="max-w-[1280px] mx-auto px-6 md:px-12 pt-16 pb-8">
                 {/* Logo */}
                 <div className="mb-12">

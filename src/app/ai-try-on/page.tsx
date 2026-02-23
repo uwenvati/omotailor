@@ -174,7 +174,7 @@ export default function AITryOnPage() {
             </section>
 
             {/* ═══════ 2. FEATURE PREVIEW (Interactive Mockup) ═══════ */}
-            <section id="feature-preview" className="py-20 md:py-28 bg-white">
+            <section id="feature-preview" className="py-20 md:py-28">
                 <div className="max-w-[1280px] mx-auto px-6 md:px-12">
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-center mb-4 font-[family-name:var(--font-heading)]">
                         How It Will Work
