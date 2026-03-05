@@ -3,7 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, Search, Menu, X, Instagram, Facebook, Twitter, MessageCircle, Mail, Phone } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, Instagram, Facebook, MessageCircle, Mail, Phone } from 'lucide-react';
+
+const TikTokIcon = ({ size = 16 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.21 8.21 0 0 0 4.76 1.52V6.75a4.81 4.81 0 0 1-1-.06z" />
+    </svg>
+);
 import { useCart } from '@/context/CartContext';
 
 const navLinks: { href: string; label: string; badge?: string }[] = [
@@ -190,9 +196,9 @@ const Header = () => {
                     <div className="flex items-center justify-center gap-4 py-6">
                         {[
                             { icon: Instagram, href: 'https://instagram.com/omotailor', label: 'Instagram' },
-                            { icon: Facebook, href: 'https://facebook.com/omotailor', label: 'Facebook' },
-                            { icon: Twitter, href: 'https://twitter.com/omotailor', label: 'Twitter' },
-                            { icon: MessageCircle, href: 'https://wa.me/2349160002472', label: 'WhatsApp' },
+                            { icon: Facebook, href: 'https://facebook.com/omotailorlondon1967', label: 'Facebook' },
+                            { icon: TikTokIcon, href: 'https://tiktok.com/@omotailorlondon', label: 'TikTok' },
+                            { icon: MessageCircle, href: 'https://wa.me/2347061024594?text=Hello!%20I%20have%20a%20question%20about%20your%20products.', label: 'WhatsApp' },
                         ].map((social) => (
                             <a
                                 key={social.label}
@@ -212,13 +218,17 @@ const Header = () => {
 
                     {/* Contact Info */}
                     <div className="px-6 py-5 space-y-3">
-                        <a href="mailto:support@omotailor.com" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
+                        <a href="mailto:omotailorlondon@gmail.com" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
                             <Mail size={14} />
-                            support@omotailor.com
+                            omotailorlondon@gmail.com
                         </a>
-                        <a href="tel:+2349160002472" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
+                        <a href="tel:+2347061024594" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
                             <Phone size={14} />
-                            +234 916 000 2472
+                            0706 102 4594
+                        </a>
+                        <a href="tel:+2348156952012" className="flex items-center gap-3 text-white/60 text-sm hover:text-gold transition-colors">
+                            <Phone size={14} />
+                            0815 695 2012
                         </a>
                     </div>
 

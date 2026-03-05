@@ -1,6 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { Instagram, Twitter, Facebook, Mail, Phone, MessageCircle } from 'lucide-react';
+import { Instagram, Facebook, Mail, Phone, MessageCircle } from 'lucide-react';
+
+const TikTokIcon = ({ size = 18 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.21 8.21 0 0 0 4.76 1.52V6.75a4.81 4.81 0 0 1-1-.06z" />
+    </svg>
+);
+
 
 const Footer = () => {
     return (
@@ -92,7 +99,7 @@ const Footer = () => {
                         <h4 className="text-sm uppercase tracking-[3px] font-bold mb-6">Follow Us</h4>
                         <div className="flex space-x-4 mb-6">
                             <a
-                                href="https://instagram.com"
+                                href="https://instagram.com/omotailor"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full border border-border-elegant flex items-center justify-center text-text-gray hover:bg-black hover:text-white hover:border-black transition-all"
@@ -101,7 +108,7 @@ const Footer = () => {
                                 <Instagram size={18} />
                             </a>
                             <a
-                                href="https://facebook.com"
+                                href="https://facebook.com/omotailorlondon1967"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full border border-border-elegant flex items-center justify-center text-text-gray hover:bg-black hover:text-white hover:border-black transition-all"
@@ -110,16 +117,16 @@ const Footer = () => {
                                 <Facebook size={18} />
                             </a>
                             <a
-                                href="https://twitter.com"
+                                href="https://tiktok.com/@omotailorlondon"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full border border-border-elegant flex items-center justify-center text-text-gray hover:bg-black hover:text-white hover:border-black transition-all"
-                                aria-label="Twitter"
+                                aria-label="TikTok"
                             >
-                                <Twitter size={18} />
+                                <TikTokIcon size={18} />
                             </a>
                             <a
-                                href="https://wa.me/2341234567890?text=Hello!%20I%20have%20a%20question%20about%20your%20products."
+                                href="https://wa.me/2347061024594?text=Hello!%20I%20have%20a%20question%20about%20your%20products."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-full border border-border-elegant flex items-center justify-center text-text-gray hover:bg-gold hover:text-white hover:border-gold transition-all"
@@ -131,13 +138,17 @@ const Footer = () => {
 
                         {/* Contact Info */}
                         <div className="space-y-3 text-sm text-text-gray">
-                            <a href="mailto:info@omotailor.com" className="flex items-center space-x-2 hover:text-black transition-colors">
+                            <a href="mailto:omotailorlondon@gmail.com" className="flex items-center space-x-2 hover:text-black transition-colors">
                                 <Mail size={14} />
-                                <span>info@omotailor.com</span>
+                                <span>omotailorlondon@gmail.com</span>
                             </a>
-                            <a href="tel:+2341234567890" className="flex items-center space-x-2 hover:text-black transition-colors">
+                            <a href="tel:+2347061024594" className="flex items-center space-x-2 hover:text-black transition-colors">
                                 <Phone size={14} />
-                                <span>+234-123-456-7890</span>
+                                <span>0706 102 4594</span>
+                            </a>
+                            <a href="tel:+2348156952012" className="flex items-center space-x-2 hover:text-black transition-colors">
+                                <Phone size={14} />
+                                <span>0815 695 2012</span>
                             </a>
                         </div>
                     </div>

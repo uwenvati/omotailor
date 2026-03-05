@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Instagram, Facebook, Twitter, MessageCircle, ChevronDown, ChevronRight, Send, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Instagram, Facebook, MessageCircle, ChevronDown, ChevronRight, Send, Check } from 'lucide-react';
+
+const TikTokIcon = ({ size = 18 }: { size?: number }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.21 8.21 0 0 0 4.76 1.52V6.75a4.81 4.81 0 0 1-1-.06z" />
+    </svg>
+);
 import Link from 'next/link';
 
 const FAQ_ITEMS = [
@@ -178,8 +184,8 @@ const ContactPage = () => {
                                 <Mail size={18} className="text-gold" />
                                 <h3 className="text-sm font-bold uppercase tracking-[2px]">Email</h3>
                             </div>
-                            <a href="mailto:support@omotailor.com" className="text-text-gray hover:text-black transition-colors text-sm">
-                                support@omotailor.com
+                            <a href="mailto:omotailorlondon@gmail.com" className="text-text-gray hover:text-black transition-colors text-sm">
+                                omotailorlondon@gmail.com
                             </a>
                         </div>
 
@@ -188,8 +194,11 @@ const ContactPage = () => {
                                 <Phone size={18} className="text-gold" />
                                 <h3 className="text-sm font-bold uppercase tracking-[2px]">Phone</h3>
                             </div>
-                            <a href="tel:+2341234567890" className="text-text-gray hover:text-black transition-colors text-sm block">
-                                +234-123-456-7890
+                            <a href="tel:+2347061024594" className="text-text-gray hover:text-black transition-colors text-sm block">
+                                0706 102 4594
+                            </a>
+                            <a href="tel:+2348156952012" className="text-text-gray hover:text-black transition-colors text-sm block mt-1">
+                                0815 695 2012
                             </a>
                             <p className="text-xs text-text-gray mt-1">Mon-Fri: 9AM-6PM WAT</p>
                         </div>
@@ -224,7 +233,7 @@ const ContactPage = () => {
                             <h3 className="text-sm font-bold uppercase tracking-[2px] mb-4">Follow Us</h3>
                             <div className="flex gap-3">
                                 <a
-                                    href="https://instagram.com"
+                                    href="https://instagram.com/omotailor"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 border border-border-elegant flex items-center justify-center text-text-gray hover:bg-black hover:text-white hover:border-black transition-all"
@@ -233,7 +242,7 @@ const ContactPage = () => {
                                     <Instagram size={18} />
                                 </a>
                                 <a
-                                    href="https://facebook.com"
+                                    href="https://facebook.com/omotailorlondon1967"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 border border-border-elegant flex items-center justify-center text-text-gray hover:bg-black hover:text-white hover:border-black transition-all"
@@ -242,16 +251,16 @@ const ContactPage = () => {
                                     <Facebook size={18} />
                                 </a>
                                 <a
-                                    href="https://twitter.com"
+                                    href="https://tiktok.com/@omotailorlondon"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 border border-border-elegant flex items-center justify-center text-text-gray hover:bg-black hover:text-white hover:border-black transition-all"
-                                    aria-label="Twitter"
+                                    aria-label="TikTok"
                                 >
-                                    <Twitter size={18} />
+                                    <TikTokIcon size={18} />
                                 </a>
                                 <a
-                                    href="https://wa.me/2341234567890?text=Hello!%20I%20have%20a%20question%20about%20your%20products."
+                                    href="https://wa.me/2347061024594?text=Hello!%20I%20have%20a%20question%20about%20your%20products."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-10 h-10 border border-border-elegant flex items-center justify-center text-text-gray hover:bg-gold hover:text-white hover:border-gold transition-all"
